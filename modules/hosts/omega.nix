@@ -11,6 +11,7 @@
     modules = with self.nixosModules; [
       # Hardware
       omega-h
+      omega-disko
 
       # Hosts
       alpha
