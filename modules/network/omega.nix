@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   flake.nixosModules.omega-network = {
     networking = {
       hostName = "omega";
@@ -11,6 +10,23 @@
         externalInterface = "eno1";
         internalInterfaces = [
           "microvm"
+        ];
+      };
+
+      # Firewall rules for DHCP relay (UDP ports 67 & 68)
+      firewall.allowedUDPPorts = [
+        67
+        68
+      ];
+    };
+
+    # DHCP Relay: Forward LAN DHCP requests arriving on eno1 to Pi-hole VM (10.0.0.2)
+    services.dnsmasq = {
+      enable = true;
+      settings = {
+        port = 0; # Disable DNS server functionality (handled by Pi-hole)
+        dhcp-relay = [
+          "10.0.0.1,10.0.0.2,eno1"
         ];
       };
     };

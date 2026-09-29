@@ -1,7 +1,1 @@
-{
-  flake.nixosModules.networking = {
-    networking = {
-      useNetworkd = true;
-    };
-  };
-}
+_: { }

@@ -3,7 +3,6 @@
   flake.nixosModules.alpha-h = {
     imports = [ inputs.microvm.nixosModules.microvm ];
 
-    # Hardware config
     microvm = {
       vcpu = 1;
       mem = 4096;
@@ -23,6 +22,7 @@
         }
       ];
     };
+
     systemd.network = {
       enable = true;
       networks."20-lan" = {
