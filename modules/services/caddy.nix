@@ -1,10 +1,9 @@
-{
+_: {
   flake.nixosModules.caddy =
     let
       domain = "puber";
     in
     {
-
       services.caddy = {
         enable = true;
 

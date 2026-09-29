@@ -25,14 +25,15 @@
               active = true;
 
               allowedOrigins = [
-                "https://pihole.example.com"
+                "https://pihole.puber.com"
+                "http://pihole.puber.com"
               ];
             };
 
             webserver = {
               active = true;
               port = lib.mkForce "80";
-              domain = lib.mkForce "pihole.example.com";
+              domain = lib.mkForce "pihole.puber.com";
 
               api.pwhash = "$BALLOON-SHA256$v=1$s=1024,t=32$JmUiy69EGfJqy1/E9/o1Og==$KYi4l+qD/01Gj/J85mF9Ypg61eh2FylMYTVKqksDD/o=";
             };
