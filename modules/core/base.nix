@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.base = {
+  flake.nixosModules.base = { pkgs, ... }: {
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
@@ -13,6 +13,11 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNmZaXg2ohLL11M1nRcNO3uWMt3f9lhz39uoa3oJLsZ pim@NixBTW"
       ];
     };
+
+    environment.systemPackages = with pkgs; [
+      ripgrep
+      git
+    ];
 
     services.openssh = {
       enable = true;
