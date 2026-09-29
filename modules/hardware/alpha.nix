@@ -6,7 +6,6 @@
     microvm = {
       vcpu = 1;
       mem = 4096;
-      user = "nix";
       interfaces = [
         {
           type = "tap";
