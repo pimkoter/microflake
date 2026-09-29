@@ -5,13 +5,20 @@
       "flakes"
     ];
 
-    users.users.nix = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ];
-      initialPassword = "12345";
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNmZaXg2ohLL11M1nRcNO3uWMt3f9lhz39uoa3oJLsZ pim@NixBTW"
-      ];
+    users.users = {
+      nix = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        initialPassword = "12345";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNmZaXg2ohLL11M1nRcNO3uWMt3f9lhz39uoa3oJLsZ pim@NixBTW"
+        ];
+      };
+      root = {
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNmZaXg2ohLL11M1nRcNO3uWMt3f9lhz39uoa3oJLsZ pim@NixBTW"
+        ];
+      };
     };
 
     environment.systemPackages = with pkgs; [
