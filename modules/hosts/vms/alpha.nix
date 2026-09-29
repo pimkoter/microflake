@@ -12,6 +12,7 @@
 
       config = {
         imports = with inputs.self.nixosModules; [
+          base
           alpha-h
           pihole
         ];

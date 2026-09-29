@@ -9,11 +9,20 @@
       inherit inputs self;
     };
     modules = with self.nixosModules; [
-      # Hardware
+      # Base system defaults
+      base
+
+      # Hardware & Disk
       omega-h
       omega-disko
 
-      # Hosts
+      # Networking
+      omega-network
+
+      # Reverse Proxy
+      caddy
+
+      # MicroVM Guests
       alpha
     ];
   };
