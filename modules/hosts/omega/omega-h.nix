@@ -11,7 +11,5 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
-    sops.defaultSopsFile = ./omega.yaml;
   };
 }

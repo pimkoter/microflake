@@ -9,7 +9,7 @@ keys:
     - &Omega age1yfdsp024p2696y2z9f2eqzc8deh4w26yvq9ygh68t3nm5amu7v8s2nf5tf
 
 creation_rules:
-  - path_regex: general.yaml$
+  - path_regex: secrets.yaml$
     key_groups:
       - age:
           - *pim
