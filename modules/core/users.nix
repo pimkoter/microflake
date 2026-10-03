@@ -6,7 +6,7 @@
         extraGroups = [ "wheel" ];
         hashedPasswordFile = config.sops.secrets."passwords/nix".path;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNmZaXg2ohLL11M1nRcNO3uWMt3f9lhz39uoa3oJLsZ pim@NixBTW"
+          config.sops.secrets."keys/allowed".path
         ];
       };
       root = {
@@ -18,6 +18,7 @@
     };
 
     sops.secrets = {
+      "keys/allowed" = { };
       "passwords/nix".neededForUsers = true;
       "passwords/root".neededForUsers = true;
     };
