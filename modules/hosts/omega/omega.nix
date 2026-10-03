@@ -1,18 +1,29 @@
-{ inputs, ... }:
 {
-  flake.nixosModules.omega-h = {
-    imports = [
-      inputs.microvm.nixosModules.host
-      inputs.sops-nix.nixosModules.sops
-    ];
-
-    nixpkgs.hostPlatform = "x86_64-linux";
-
-    boot.loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+  self,
+  inputs,
+  ...
+}:
+{
+  flake.nixosConfigurations.omega = inputs.nixpkgs.lib.nixosSystem {
+    specialArgs = {
+      inherit inputs self;
     };
+    modules = with self.nixosModules; [
+      # Base system defaults
+      base
 
-    sops.defaultSopsFile = ./omega.yaml;
+      # Hardware & Disk
+      omega-h
+      omega-disko
+
+      # Networking
+      omega-network
+
+      # Reverse Proxy
+      caddy
+
+      # MicroVM Guests
+      alpha
+    ];
   };
 }
