@@ -1,5 +1,7 @@
+{ inputs, ... }:
 {
   flake.nixosModules.misc = {
+    imports = [ inputs.sops-nix.nixosModules.sops ];
     system.stateVersion = "25.05";
     nix.settings.experimental-features = [
       "nix-command"
