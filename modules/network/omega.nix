@@ -4,7 +4,7 @@ _: {
       hostName = "omega";
       useNetworkd = true;
 
-      # NAT private VM network through physical LAN
+      # NAT private MicroVM subnet through the physical LAN interface
       nat = {
         enable = true;
         externalInterface = "eno1";
@@ -13,11 +13,14 @@ _: {
         ];
       };
 
-      # Firewall rules for DHCP relay (UDP ports 67 & 68)
-      firewall.allowedUDPPorts = [
-        67
-        68
-      ];
+      # Firewall rules for host interfaces and MicroVM bridge
+      firewall = {
+        enable = true;
+        allowedUDPPorts = [
+          67 # DHCP relay server port
+          68 # DHCP relay client port
+        ];
+      };
     };
 
     # DHCP Relay: Forward LAN DHCP requests arriving on eno1 to Pi-hole VM (10.0.0.2)

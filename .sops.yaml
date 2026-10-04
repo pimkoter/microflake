@@ -1,0 +1,24 @@
+keys:
+  # Personal AGE key
+  - &users:
+    - &pim age170y3cwutmzar845tk4q4rqsvzgddxay85dwy7xfarzhmrvhu59dq3504nx
+
+  # Hosts SSH-to-AGE keys
+  - &hosts:
+    - &NixBTW age1qfgg7wy3xl04zwn4nytzz0qr7u5jr250mk7pc0gflgh7yerm092q46s9wl
+    - &Omega age1yfdsp024p2696y2z9f2eqzc8deh4w26yvq9ygh68t3nm5amu7v8s2nf5tf
+
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+      - age:
+          - *pim
+          - *NixBTW
+          - *Omega
+
+  - path_regex: omega.yaml$
+    key_groups:
+      - age:
+          - *pim
+          - *NixBTW
+          - *Omega

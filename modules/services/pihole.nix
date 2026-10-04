@@ -2,6 +2,7 @@
   flake.nixosModules.pihole =
     {
       pkgs,
+      config,
       lib,
       ...
     }:
@@ -34,8 +35,7 @@
               active = true;
               port = lib.mkForce "80";
               domain = lib.mkForce "pihole.puber.com";
-
-              api.pwhash = "$BALLOON-SHA256$v=1$s=1024,t=32$JmUiy69EGfJqy1/E9/o1Og==$KYi4l+qD/01Gj/J85mF9Ypg61eh2FylMYTVKqksDD/o=";
+              api.pwhash = config.sops.secrets."alpha/pihole-pass".path;
             };
 
             dns = {
@@ -149,6 +149,9 @@
           lists = [ ];
         };
       };
+
+      # SOPS secret declaration for Pi-hole web admin password hash
+      sops.secrets."alpha/pihole-pass" = { };
 
       environment.systemPackages = with pkgs; [
         pihole
