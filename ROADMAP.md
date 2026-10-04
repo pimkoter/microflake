@@ -8,16 +8,16 @@ infrastructure.
 
 ## Phase 1: Security & Credential Hardening 🔒
 
-- [ ] **Remove Hardcoded Secrets**
+- [x] **Remove Hardcoded Secrets**
   - Migrate the Pi-hole password hash (`webserver.api.pwhash` in
     `modules/services/pihole.nix`) to `sops-nix`.
   - Move hardcoded SSH keys in `modules/core/users.nix` into encrypted SOPS
     secrets or external parameterization.
-- [ ] **TLS Certificate Management**
+- [x] **TLS Certificate Management**
   - Integrate ACME / Let's Encrypt (or Cloudflare DNS-01 challenge) into
     `modules/services/caddy.nix` for automatic SSL/TLS certificate provisioning.
   - Enforce HTTPS redirect for all virtual hosts.
-- [ ] **Guest-to-Host Security**
+- [x] **Guest-to-Host Security**
   - Secure internal HTTP communications between host reverse proxy and MicroVM
     guests.
   - Restrict inter-VM network access on the `microvm` bridge using network
@@ -27,10 +27,10 @@ infrastructure.
 
 ## Phase 2: Storage Resilience, Persistence & Backups 💾
 
-- [ ] **MicroVM State Persistence**
-  - Define dedicated persistent storage shares/block devices for MicroVMs
+- [x] **MicroVM State Persistence**
+  - Define dedicated persistent storage shares (VirtioFS) for MicroVMs
     (`alpha`, `beta`) to ensure Pi-hole databases, query logs, and service state
-    survive host reboots.
+    survive host reboots and VM recreations.
 
 ---
 

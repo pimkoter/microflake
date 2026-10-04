@@ -20,7 +20,7 @@
           openFirewallWebserver = true;
 
           settings = {
-            misc.readOnly = true;
+            misc.readOnly = false;
 
             api = {
               active = true;
@@ -159,6 +159,8 @@
       ];
 
       systemd.tmpfiles.rules = [
+        "d /etc/pihole 0755 pihole pihole - -"
+        "d /var/lib/pihole 0755 pihole pihole - -"
         "f /etc/pihole/versions 0644 pihole pihole - -"
       ];
     };

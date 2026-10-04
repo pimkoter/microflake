@@ -19,6 +19,18 @@
           source = "/nix/store";
           mountPoint = "/nix/.ro-store";
         }
+        {
+          tag = "etc-pihole";
+          source = "/var/lib/microvms/alpha/etc-pihole";
+          mountPoint = "/etc/pihole";
+          proto = "virtiofs";
+        }
+        {
+          tag = "var-pihole";
+          source = "/var/lib/microvms/alpha/var-pihole";
+          mountPoint = "/var/lib/pihole";
+          proto = "virtiofs";
+        }
       ];
     };
 
