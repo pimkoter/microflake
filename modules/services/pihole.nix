@@ -150,6 +150,9 @@
         };
       };
 
+      # SOPS secret declaration for Pi-hole web admin password hash
+      sops.secrets."alpha/pihole-pass" = { };
+
       environment.systemPackages = with pkgs; [
         pihole
         pihole-ftl

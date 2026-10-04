@@ -7,21 +7,24 @@
           isNormalUser = true;
           extraGroups = [ "wheel" ];
           hashedPasswordFile = config.sops.secrets."passwords/nix".path;
-          openssh.authorizedKeys.keys = [
-            config.sops.secrets."keys/allowed".path
+          # Load SSH authorized keys dynamically from SOPS secret file
+          openssh.authorizedKeys.keyFiles = [
+            config.sops.secrets."allowed-key".path
           ];
         };
         root = {
           hashedPasswordFile = config.sops.secrets."passwords/root".path;
-          openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNmZaXg2ohLL11M1nRcNO3uWMt3f9lhz39uoa3oJLsZ pim@NixBTW"
+          # Remove plain text SSH key from source code; load dynamically from SOPS
+          openssh.authorizedKeys.keyFiles = [
+            config.sops.secrets."allowed-key".path
           ];
         };
       };
     };
 
+    # Secret declarations managed by sops-nix
     sops.secrets = {
-      "keys/allowed" = { };
+      "allowed-key" = { };
       "passwords/nix".neededForUsers = true;
       "passwords/root".neededForUsers = true;
     };
