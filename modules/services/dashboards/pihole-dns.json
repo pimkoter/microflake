@@ -1,0 +1,68 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "title": "DNS Queries Rate",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "Prometheus" },
+          "expr": "rate(pihole_queries_total[5m])",
+          "legendFormat": "Queries/sec"
+        }
+      ]
+    },
+    {
+      "title": "Blocked DNS Queries Rate",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "Prometheus" },
+          "expr": "rate(pihole_queries_blocked_total[5m])",
+          "legendFormat": "Blocked Queries/sec"
+        }
+      ]
+    },
+    {
+      "title": "Domains on Blocklist",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "Prometheus" },
+          "expr": "pihole_domains_being_blocked",
+          "legendFormat": "Domains"
+        }
+      ]
+    },
+    {
+      "title": "Caddy Web Requests Rate",
+      "type": "timeseries",
+      "gridPos": { "h": 6, "w": 12, "x": 12, "y": 8 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus", "uid": "Prometheus" },
+          "expr": "sum(rate(caddy_http_requests_total[5m])) by (code)",
+          "legendFormat": "HTTP {{code}}"
+        }
+      ]
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["microflake", "pihole", "dns", "caddy"],
+  "time": { "from": "now-1h", "to": "now" },
+  "title": "Microflake - Pi-hole DNS & Web Traffic Analytics",
+  "uid": "microflake-pihole-dns"
+}
