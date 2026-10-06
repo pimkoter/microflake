@@ -22,6 +22,12 @@
       # Reverse Proxy
       caddy
 
+      # Observability & Monitoring
+      prometheus
+      logging
+      alertmanager
+      grafana
+
       # MicroVM Guests
       alpha
     ];

@@ -15,6 +15,10 @@
           base
           alpha-h
           pihole
+
+          # Metrics Exporters & Log Forwarding
+          alpha-exporters
+          alpha-logging
         ];
       };
     };
