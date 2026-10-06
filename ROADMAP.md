@@ -36,15 +36,15 @@ infrastructure.
 
 ## Phase 3: Observability & Monitoring 📊
 
-- [ ] **Metrics Collection**
+- [x] **Metrics Collection**
   - Deploy `prometheus` and `node_exporter` across the host (`omega`) and guest
     VMs (`alpha`).
   - Export Pi-hole DNS metrics and Caddy request performance metrics.
-- [ ] **Dashboards & Logging**
+- [x] **Dashboards & Logging**
   - Deploy Grafana for centralized visualization of host CPU/RAM/disk usage, DNS
     performance, and web traffic.
-  - Set up log aggregation (e.g., `promtail` + `loki` or `journald` forwarding).
-- [ ] **Automated Alerting**
+  - Set up log aggregation (e.g., `promtail` / Grafana Alloy + `loki` for `journald` forwarding).
+- [x] **Automated Alerting**
   - Configure Alertmanager with notifications (Matrix, Telegram, Discord, or
     Email) for service failures, high disk utilization, or VM crashes.
 
