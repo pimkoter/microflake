@@ -29,6 +29,17 @@
       alertmanager
       grafana
 
+      # AI Manager & LLM
+      ollama
+      odysseus
+
+      # Smart Home & IoT
+      homeAssistant
+      mosquitto
+
+      # RAG & Knowledge Base
+      vectorDb
+
       # MicroVM Guests
       alpha
       beta

@@ -14,7 +14,7 @@
             "/run/dbus:/run/dbus:ro"
           ];
           environment = {
-            TZ = "America/New_York";
+            TZ = "Europe/Amsterdam";
           };
           extraOptions = [
             "--network=host"

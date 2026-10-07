@@ -28,9 +28,9 @@ infrastructure.
 ## Phase 2: Storage Resilience, Persistence & Backups 💾
 
 - [x] **MicroVM State Persistence**
-  - Define dedicated persistent storage shares (VirtioFS) for MicroVMs
-    (`alpha`, `beta`) to ensure Pi-hole databases, query logs, and service state
-    survive host reboots and VM recreations.
+  - Define dedicated persistent storage shares (VirtioFS) for MicroVMs (`alpha`,
+    `beta`) to ensure Pi-hole databases, query logs, and service state survive
+    host reboots and VM recreations.
 
 ---
 
@@ -43,7 +43,8 @@ infrastructure.
 - [x] **Dashboards & Logging**
   - Deploy Grafana for centralized visualization of host CPU/RAM/disk usage, DNS
     performance, and web traffic.
-  - Set up log aggregation (e.g., `promtail` / Grafana Alloy + `loki` for `journald` forwarding).
+  - Set up log aggregation (e.g., `promtail` / Grafana Alloy + `loki` for
+    `journald` forwarding).
 - [x] **Automated Alerting**
   - Configure Alertmanager with notifications (Matrix, Telegram, Discord, or
     Email) for service failures, high disk utilization, or VM crashes.
@@ -71,3 +72,49 @@ infrastructure.
   - Adopt `deploy-rs` or `colmena` for remote deployment with automatic health
     verification and atomic rollback capabilities.
   - Eliminate manual execution of `install.sh`.
+
+---
+
+## Phase 6: Odysseus AI Manager & Local Agentic Core 🤖
+
+- [x] **Local LLM Backend Setup**
+  - Deploy Ollama or llama.cpp inference engine on host `omega` (with GPU
+    acceleration support if available).
+  - Configure model endpoints and resource limits.
+- [x] **Odysseus AI Agent Core**
+  - Set up Odysseus AI manager service on `omega`.
+  - Configure tool-calling capabilities and secure agent memory.
+- [x] **System & File Access**
+  - Grant Odysseus secure, scoped read/write access to system logs
+    (Loki/Journald), Prometheus metrics, and designated workspace directories.
+
+---
+
+## Phase 7: IoT & Smart Home Integration (ESP32, Lights, & Grocery List) 🏠
+
+- [x] **ESP32 & ESPHome Setup**
+  - Configure ESPHome and flash ESP32 microcontrollers for physical
+    sensor/button units.
+  - Set up MQTT / API broker communication with Home Assistant.
+- [x] **Smart Lighting & Device Control**
+  - Integrate smart relays and light switches with Home Assistant and expose
+    control actions to Odysseus.
+- [x] **Grocery List & Household Management**
+  - Implement shopping list integration (Home Assistant Shopping List API /
+    Todoist integration).
+  - Wire ESP32 physical buttons or voice inputs to add items directly to the
+    shared grocery list.
+
+---
+
+## Phase 8: Advanced Assistant Capabilities (Mail, RAG, & Q&A) 📧
+
+- [x] **Email Integration & Automation**
+  - Connect Odysseus / Home Assistant to IMAP mail servers for reading,
+    summarizing, and triaging incoming mail.
+- [x] **RAG & Knowledge Base**
+  - Implement vector database indexing (Chroma / Qdrant) over local files,
+    documentation, and personal notes for accurate Q&A.
+- [x] **Unified Multi-Modal Interface**
+  - Build a voice/text gateway connecting mobile clients, web UI, and ESP32
+    hardware to the Odysseus AI manager.

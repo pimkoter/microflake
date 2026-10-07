@@ -48,6 +48,27 @@ _: {
             }
             reverse_proxy http://10.0.0.3:3000
           '';
+
+          # Home Assistant reverse proxy
+          "hass.${domain}.com".extraConfig = ''
+            header {
+              Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+              X-Content-Type-Options "nosniff"
+              Referrer-Policy "strict-origin-when-cross-origin"
+            }
+            reverse_proxy http://127.0.0.1:8123
+          '';
+
+          # Odysseus AI Manager reverse proxy
+          "odysseus.${domain}.com".extraConfig = ''
+            header {
+              Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+              X-Content-Type-Options "nosniff"
+              X-Frame-Options "DENY"
+              Referrer-Policy "strict-origin-when-cross-origin"
+            }
+            reverse_proxy http://127.0.0.1:8080
+          '';
         };
       };
 
