@@ -90,7 +90,7 @@
               end = "192.168.1.254";
 
               # Omega is the gateway for the home LAN.
-              router = "192.168.1.10";
+              router = "192.168.178.10";
 
               # Important when DHCP arrives through a relay.
               netmask = "255.255.255.0";
@@ -152,6 +152,11 @@
 
       # SOPS secret declaration for Pi-hole web admin password hash
       sops.secrets."alpha/pihole-pass" = { };
+
+      # Local DNS wildcard resolution: route all *.puber.com subdomains to host omega (192.168.178.10)
+      environment.etc."dnsmasq.d/05-custom-dns.conf".text = ''
+        address=/puber.com/192.168.178.10
+      '';
 
       environment.systemPackages = with pkgs; [
         pihole
