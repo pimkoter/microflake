@@ -20,10 +20,14 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs:
+    inputs@{ self, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         (inputs.import-tree ./modules)
@@ -32,5 +36,14 @@
         "x86_64-linux"
         "aarch64-linux"
       ];
+      flake = {
+        deploy.nodes.omega = {
+          hostname = "omega";
+          profiles.system = {
+            user = "root";
+            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.omega;
+          };
+        };
+      };
     };
 }

@@ -21,6 +21,7 @@
 
       # Reverse Proxy
       caddy
+      fail2ban
 
       # Observability & Monitoring
       prometheus

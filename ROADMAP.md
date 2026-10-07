@@ -52,11 +52,11 @@ infrastructure.
 
 ## Phase 4: Network Hardening & Intrusion Prevention 🛡️
 
-- [ ] **Ingress Protection**
+- [x] **Ingress Protection**
   - Add CrowdSec or Fail2ban to Caddy to automatically block malicious IPs
     attempting brute-force attacks or vulnerability scans.
   - Implement rate limiting on public-facing endpoints.
-- [ ] **DHCP & DNS Failover**
+- [x] **DHCP & DNS Failover**
   - Configure secondary DNS resolver / DHCP failover pair to ensure network
     connectivity if the primary MicroVM goes down during host maintenance.
 
@@ -64,10 +64,10 @@ infrastructure.
 
 ## Phase 5: CI/CD & Automated Deployments 🚀
 
-- [ ] **CI Pipeline**
+- [x] **CI Pipeline**
   - Configure GitHub Actions to run `nix flake check`, `nixfmt`, `statix`,
     `deadnix`, and `trufflehog` on every pull request.
-- [ ] **Automated & Safe Deployment**
+- [x] **Automated & Safe Deployment**
   - Adopt `deploy-rs` or `colmena` for remote deployment with automatic health
     verification and atomic rollback capabilities.
   - Eliminate manual execution of `install.sh`.

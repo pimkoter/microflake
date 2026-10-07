@@ -1,0 +1,5 @@
+- `[ ]` Phase 4: Ingress Protection (Caddy Rate Limiting & Fail2ban)
+- `[ ]` Phase 4: DHCP & DNS Failover configuration
+- `[ ]` Phase 5: GitHub Actions CI Pipeline (.github/workflows/ci.yml)
+- `[ ]` Phase 5: Deploy-rs automated deployment configuration
+- `[ ]` Update ROADMAP.md and verify with `nix flake check`

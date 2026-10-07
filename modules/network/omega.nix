@@ -23,13 +23,16 @@ _: {
       };
     };
 
-    # DHCP Relay: Forward LAN DHCP requests arriving on eno1 to Pi-hole VM (10.0.0.2)
+    # DHCP Relay: Forward LAN DHCP requests arriving on eno1 to Pi-hole VM (10.0.0.2) and secondary fallback (10.0.0.3)
     services.dnsmasq = {
       enable = true;
       settings = {
         port = 0; # Disable DNS server functionality (handled by Pi-hole)
         dhcp-relay = [
           "10.0.0.1,10.0.0.2,eno1"
+        ];
+        dhcp-option = [
+          "6,10.0.0.2,10.0.0.3" # Primary DNS (alpha) and Secondary DNS fallback (beta)
         ];
       };
     };
