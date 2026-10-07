@@ -16,6 +16,9 @@
     systemd.tmpfiles.rules = [
       "d /var/lib/microvms/alpha/etc-pihole 0755 root root - -"
       "d /var/lib/microvms/alpha/var-pihole 0755 root root - -"
+      "d /var/lib/microvms/beta/persistent 0755 root root - -"
+      "d /var/lib/microvms/gamma/persistent 0755 root root - -"
+      "d /var/lib/microvms/delta/persistent 0755 root root - -"
     ];
   };
 }
