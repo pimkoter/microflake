@@ -1,11 +1,11 @@
 { inputs, ... }:
 {
-  flake.nixosModules.alpha = {
+  flake.nixosModules.delta = {
     imports = [
       inputs.microvm.nixosModules.host
     ];
 
-    microvm.vms.alpha = {
+    microvm.vms.delta = {
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
       };
@@ -13,13 +13,8 @@
       config = {
         imports = with inputs.self.nixosModules; [
           base
-          alpha-h
-          pihole
-          unbound
-
-          # Metrics Exporters & Log Forwarding
-          alpha-exporters
-          alpha-logging
+          delta-h
+          exitNode
         ];
       };
     };

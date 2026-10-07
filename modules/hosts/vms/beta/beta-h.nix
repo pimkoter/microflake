@@ -1,16 +1,16 @@
 { inputs, ... }:
 {
-  flake.nixosModules.alpha-h = {
+  flake.nixosModules.beta-h = {
     imports = [ inputs.microvm.nixosModules.microvm ];
 
     microvm = {
-      vcpu = 1;
-      mem = 1024;
+      vcpu = 2;
+      mem = 2047;
       interfaces = [
         {
           type = "tap";
-          id = "vm-alpha";
-          mac = "02:00:00:00:00:01";
+          id = "vm-beta";
+          mac = "02:00:00:00:00:02";
         }
       ];
       shares = [
@@ -20,15 +20,9 @@
           mountPoint = "/nix/.ro-store";
         }
         {
-          tag = "etc-pihole";
-          source = "/var/lib/microvms/alpha/etc-pihole";
-          mountPoint = "/etc/pihole";
-          proto = "virtiofs";
-        }
-        {
-          tag = "var-pihole";
-          source = "/var/lib/microvms/alpha/var-pihole";
-          mountPoint = "/var/lib/pihole";
+          tag = "persistent";
+          source = "/var/lib/microvms/beta/persistent";
+          mountPoint = "/var/lib";
           proto = "virtiofs";
         }
       ];
@@ -40,7 +34,7 @@
         matchConfig.Type = "ether";
         networkConfig = {
           Address = [
-            "10.0.0.2/24"
+            "10.0.0.3/24"
           ];
           Gateway = "10.0.0.1";
           DNS = [ "10.0.0.1" ];

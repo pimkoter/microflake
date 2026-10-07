@@ -31,6 +31,9 @@
 
       # MicroVM Guests
       alpha
+      beta
+      gamma
+      delta
     ];
   };
 }
