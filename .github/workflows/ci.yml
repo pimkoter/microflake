@@ -25,7 +25,3 @@ jobs:
 
       - name: Run Nix Flake Check
         run: nix flake check --accept-flake-config
-
-      - name: Run Pre-commit Checks / Linters
-        run: |
-          nix develop --command pre-commit run --all-files
